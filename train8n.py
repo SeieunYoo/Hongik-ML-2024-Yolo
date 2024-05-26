@@ -1,9 +1,5 @@
 import torch
-from tensorboardX import SummaryWriter
 from ultralytics import YOLO
-
-# TensorBoardX SummaryWriter 설정
-writer = SummaryWriter('runs/yolov8_example')
 
 # 사전 학습된 YOLOv5 모델 로드
 model = YOLO('yolov8n.pt')
@@ -12,7 +8,7 @@ model = YOLO('yolov8n.pt')
 epochs = 3
 data_path = 'data/data.yaml'
 img_size = 640
-batch_size = 4
+batch_size = 40
 project_name = 'yolov8n_custom'
 project_dir = 'runs/train'
 
