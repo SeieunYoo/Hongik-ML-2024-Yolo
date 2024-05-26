@@ -1,15 +1,46 @@
-# Hongik-ML-2024-Yolo
+## Yolov8-30000-epoch3
 
-yolov8n/10000장/ 커스텀 데이터로 학습
+![image/png](https://cdn-uploads.huggingface.co/production/uploads/664601b5716087aeff3551c9/PVBDoaDw4eioJr7e-iJ0r.png)
 
-![image](https://github.com/SeieunYoo/Hongik-ML-2024-Yolo/assets/101736358/6575a013-6576-4d4c-ac3a-5ae9fbd73d2a)
 
-TensorBoard
+![](https://velog.velcdn.com/images/yoose1002/post/f9a82c3d-67e1-4d59-8d76-e772aa06ea21/image.png)
+![](https://velog.velcdn.com/images/yoose1002/post/92997ff6-e1b2-4eca-abd1-17a28425a905/image.png)
+Loss
+![](https://velog.velcdn.com/images/yoose1002/post/24610ff3-8c96-4ad4-ac43-05a757707983/image.png)
+![](https://velog.velcdn.com/images/yoose1002/post/20815104-0393-4374-b2d9-324af1a61171/image.png)
+![](https://velog.velcdn.com/images/yoose1002/post/12fe0e8a-c7a8-47be-9ea8-6a1728f01770/image.png)
+![](https://velog.velcdn.com/images/yoose1002/post/37c3f93a-1009-4411-941b-25eff340001f/image.png)
 
-![](https://velog.velcdn.com/images/yoose1002/post/70c8a115-f612-45f8-b59b-2b2cc7c6b906/image.png)
-![](https://velog.velcdn.com/images/yoose1002/post/c29dd506-d138-47f2-8242-36cd41ed3f94/image.png)
+```
+# 이미지 3만장 학습
+import torch
+from ultralytics import YOLO
 
-![](https://velog.velcdn.com/images/yoose1002/post/488a4a55-b7ab-4b68-b600-ba5ea2279be7/image.png)
-![](https://velog.velcdn.com/images/yoose1002/post/86218682-9f2d-4794-ad44-ab5b923c0d7e/image.png)
-![](https://velog.velcdn.com/images/yoose1002/post/f40536ef-6c9d-4f3e-8f9f-c99bbd1a1f83/image.png)
+# 사전 학습된 YOLOv5 모델 로드
+model = YOLO('yolov8n.pt')
 
+# 학습 설정
+epochs = 3
+data_path = 'data/data.yaml'
+img_size = 640
+batch_size = 10
+project_name = 'yolov8n_custom'
+project_dir = 'runs/train'
+
+# 사용자 정의 학습 함수
+def train_yolov8(model, data_path, img_size, batch_size, epochs, project_name, project_dir):
+    results = model.train(
+        data=data_path,
+        imgsz=img_size,
+        epochs=epochs,
+        batch=batch_size,
+        name=project_name,
+        project=project_dir,
+        warmup_epochs=1.0,
+        box=0.02,
+        mosaic=0.5,  
+    )
+
+# 모델 학습
+train_yolov8(model, data_path, img_size, batch_size, epochs, project_name, project_dir)
+```
