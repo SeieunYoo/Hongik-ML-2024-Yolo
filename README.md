@@ -1,15 +1,15 @@
 # Hongik-ML-2024-Yolo
 
-yolov5x 커스텀 데이터로 학습
+yolov8n/10000장/ 커스텀 데이터로 학습
 
-![image](https://github.com/SeieunYoo/Hongik-ML-2024-Yolo/assets/101736358/37c0ae6e-e381-4515-bbe0-5d378cc05a8f)
-![image](https://github.com/SeieunYoo/Hongik-ML-2024-Yolo/assets/101736358/892f7003-b5ae-42cf-b474-f0a43cbe1f27)
-(극저조도 환경에서는 객체 감지가 잘 되지 않았다)
+![image](https://github.com/SeieunYoo/Hongik-ML-2024-Yolo/assets/101736358/6575a013-6576-4d4c-ac3a-5ae9fbd73d2a)
+
 TensorBoard
 
-LR
-![image](https://github.com/SeieunYoo/Hongik-ML-2024-Yolo/assets/101736358/23a28682-9dbb-4d93-8712-2465aac316b7)
-Loss
-![image](https://github.com/SeieunYoo/Hongik-ML-2024-Yolo/assets/101736358/4f7eeb65-15a1-4e81-9afe-f12174f084bc)
-![image](https://github.com/SeieunYoo/Hongik-ML-2024-Yolo/assets/101736358/7f59826f-c08d-43a8-933f-dab7558e0027)
+![](https://velog.velcdn.com/images/yoose1002/post/70c8a115-f612-45f8-b59b-2b2cc7c6b906/image.png)
+![](https://velog.velcdn.com/images/yoose1002/post/c29dd506-d138-47f2-8242-36cd41ed3f94/image.png)
+
+![](https://velog.velcdn.com/images/yoose1002/post/488a4a55-b7ab-4b68-b600-ba5ea2279be7/image.png)
+![](https://velog.velcdn.com/images/yoose1002/post/86218682-9f2d-4794-ad44-ab5b923c0d7e/image.png)
+![](https://velog.velcdn.com/images/yoose1002/post/f40536ef-6c9d-4f3e-8f9f-c99bbd1a1f83/image.png)
 
