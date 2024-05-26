@@ -6,7 +6,7 @@ from tensorboardX import SummaryWriter
 # TensorBoardX SummaryWriter 설정
 writer = SummaryWriter('runs/yolov5_loss_results')
 
-# 평가 결과가 저장된 디렉토리와 파일
+# 평가 결과가 저장된 디렉토리와 파일 (runs/train/)
 results_dir = 'detect'
 results_file = os.path.join(results_dir, 'results.csv')
 
