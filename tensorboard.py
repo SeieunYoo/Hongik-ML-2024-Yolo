@@ -1,18 +1,16 @@
+
 import json
 import os
 import pandas as pd
 from tensorboardX import SummaryWriter
 
 # TensorBoardX SummaryWriter 설정
-writer = SummaryWriter('runs/yolov5_loss_results')
 
-# 평가 결과가 저장된 디렉토리와 파일
-results_dir = 'detect'
-results_file = os.path.join(results_dir, 'results.csv')
-
+# TensorBoardX SummaryWriter 설정
+writer = SummaryWriter('runs/yolov8')
 
 # CSV 파일 불러오기
-results = pd.read_csv(results_file)
+results = pd.read_csv('/content/results.csv')
 
 # 열 이름의 공백 제거
 results.columns = results.columns.str.strip()
@@ -24,15 +22,13 @@ print(results.columns)
 for index, row in results.iterrows():
     epoch = index + 1
     
-    # 학습 손실 값 기록
-    writer.add_scalar('Loss/train/box_loss', row['train/box_loss'], epoch)
-    writer.add_scalar('Loss/train/cls_loss', row['train/cls_loss'], epoch)
-    writer.add_scalar('Loss/train/dfl_loss', row['train/dfl_loss'], epoch)
+    writer.add_scalars('Loss/box_loss', {'train': row['train/box_loss'], 'val': row['val/box_loss']}, epoch)
     
-    # 검증 손실 값 기록
-    writer.add_scalar('Loss/val/box_loss', row['val/box_loss'], epoch)
-    writer.add_scalar('Loss/val/cls_loss', row['val/cls_loss'], epoch)
-    writer.add_scalar('Loss/val/dfl_loss', row['val/dfl_loss'], epoch)
+    # Class Loss 값 기록 (하나의 그래프로 통합)
+    writer.add_scalars('Loss/cls_loss', {'train': row['train/cls_loss'], 'val': row['val/cls_loss']}, epoch)
+    
+    # DFL Loss 값 기록 (하나의 그래프로 통합)
+    writer.add_scalars('Loss/dfl_loss', {'train': row['train/dfl_loss'], 'val': row['val/dfl_loss']}, epoch)
     
     # 메트릭 기록
     writer.add_scalar('Metrics/precision', row['metrics/precision(B)'], epoch)
@@ -50,4 +46,4 @@ writer.close()
 
 # TensorBoard 실행
 %load_ext tensorboard
-%tensorboard --logdir=runs/yolov5_loss_results
+%tensorboard --logdir=runs/yolov8
